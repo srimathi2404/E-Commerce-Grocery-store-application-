@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+ 
+      
+        <link rel="stylesheet" href="style.css">
+        <nav class="navbar navbar-dark bg-dark">
+       
+           <div class="container-fluid">
+            <div class="logo-container">
+              <div class="logo"><img src="../../static/Happy Mart.png" alt="logo"></div>
+          
+          <span class="navbar-brand mb-0 h1">HAPPY MART <br>
+              <div style="font-size: 16px; font-family: Arial, sans-serif;"><em>Happiness delivered at your doorstep !! </em></div></span>
+          
+          </div>             
+           
+           <div class="m">
+            
+
+          <button class="navbar-button button-container"  onclick="window.location.href='/admin_login';">Logout</button>
+
+        </div>
+
+     </div>
+       </nav>
+    
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+      .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px; 
+            height: 40px;
+            margin-right: 10px;
+        }
+        .navbar-button {
+   padding: 10px 20px;
+   background-color: #343a40;
+   color: #fff;
+   border: none;
+   cursor: pointer;
+  }
+  .navbar-button:hover {
+    background-color: #101011;
+    color: #eee;}
+  .left-containe {
+    background-color: #f0f0f0;
+    padding: 20px;
+    height: 60%;
+    flex:1;
+    
+   }
+   </style>
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    </head>
+    {%extends "index.html"%}
+    {%block content%}
+    <body class="gradient-background">
+
+        <br><br><br><br><div style="color: red; text-align: center;">{{err}}</div><br><br>
+        <section class="container">
+            <div class="left-containe">
+                <b> ADD SECTION</b><br><br>
+        <form method="post">
+        <div>{{form.section_name.label}}:  
+            {{form.section_name}}</div><br><br>
+        <button type="submit" class="btn btn-dark">ADD</button>
+        </form>
+            </div>
+    </section>
+        {%endblock content%}
+    </body>
+</html>
+
+

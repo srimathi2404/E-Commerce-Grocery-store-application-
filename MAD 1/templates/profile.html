@@ -1,0 +1,125 @@
+
+<head>
+
+    <link rel="stylesheet" href="style.css">
+    <nav class="navbar navbar-dark bg-dark">
+     
+       <div class="container-fluid">
+        <div class="logo-container">
+          <div class="logo"><img src="../static/Happy Mart.png" alt="logo"></div>
+      
+      <span class="navbar-brand mb-0 h1">HAPPY MART <br>
+          <div style="font-size: 16px; font-family: Arial, sans-serif;"><em>Happiness delivered at your doorstep !! </em></div></span>
+      
+      </div>
+       <div class="m">
+        
+      <button class="navbar-button button-container"  onclick="window.location.href='/';">Logout</button>
+    </span>
+    </div>
+
+ </div>
+   </nav>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+  .navbar-button:hover {
+    background-color: #101011;
+    color: #eee;
+  }
+  .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px; 
+            height: 40px;
+            margin-right: 10px;
+        }
+    .navbar-button {
+padding: 10px 20px;
+background-color: #343a40;
+color: #fff;
+border: none;
+cursor: pointer;
+}
+#dynamic-table {
+            width: 30%; 
+            margin: 0 auto; 
+            background-color: #fff3cd;
+        }
+table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+thead {
+            margin-bottom: 10px; 
+        }
+       body {
+      width: 100%;
+     
+      min-height: 100vh;
+     align-items: center;
+     justify-content: center;
+      background: linear-gradient(126deg, #fcf598c9 0%, hsl(50, 89%, 60%) 100%);        }
+      .textalign{
+        display: inline-block;
+            text-align: left;
+      }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+{%extends "index.html"%}
+{%block content%}
+</head>
+<body >
+
+<h2 style=" margin: 30px ; text-align: center;">Purchase Details</h2>
+
+<div style="text-align: center;">
+{% if length!=0 %}
+{% for key in purchase %}
+<div class="textalign">
+<b>Purchase ID : {{key}}   <br>   Total amount paid : Rs. {{purchase[key][0]}}</b></div>
+<div id="table-container">
+    <table id="dynamic-table" class="table-secondary">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Amount</th>
+         
+        </tr>
+    </thead>
+    <tbody>
+<div>
+{% for j in purchase[key][1] %}
+<tr>
+<td>{{j[0]}}</td>
+<td>{{j[1]}}</td>
+<td>Rs. {{j[2]}}</td>
+</tr>
+</div>
+<br>
+{% endfor %}
+</tbody>
+</table>
+</div>
+<br>
+{% endfor %}
+{% else %}
+<h4>No Purchase made yet :(</h4>
+</div>
+{% endif %}
+{%endblock content%}
+</body>
+
+

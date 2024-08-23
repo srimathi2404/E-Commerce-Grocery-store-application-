@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <nav class="navbar ">
+          <a class="navbar-brand" href='#'>
+          </a>
+            <div class="container-fluid">
+              <div class="logo-container">
+                <div class="logo"><img src="../static/Happy Mart.png" alt="logo"></div>
+            
+            <span class="navbar-brand mb-0 h1" style="color: #f7f5f5;">HAPPY MART <br>
+                <div style="font-size: 16px; font-family: Arial, sans-serif; color: #f7f5f5;"><em>Happiness delivered at your doorstep !! </em></div></span>
+            
+            </div>                   
+            
+            <div class="bu">
+              <form method="get" action="{{url_for('statistics',username=username)}}" >
+                <button  type="submit" class="navbar-button">Statistics</button></form>
+            <form method="get" action="{{url_for('admin')}}" >
+                <button  type="submit" class="navbar-button">Logout</button></form>
+                
+          </div>
+
+      </div>
+        </nav>
+    <style>
+      .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px; 
+            height: 40px;
+            margin-right: 10px;
+        }
+            
+            .right-align {
+                text-align: right;
+            }
+        
+        
+        .navs{
+          justify-content: center;
+          align-items: center;
+          display: flex;
+        }
+             .m{
+              margin-left: auto;
+          }
+            img {
+                max-width: 100px; 
+                max-height: 50px; 
+            }
+    .containe {
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+ 
+
+}
+
+.car {
+  width: 200px;
+    height: 300px;
+    border: 2px solid #0a0a0a;
+    padding: 10px;
+    background-color:#fff3cd;
+    box-sizing: border-box; 
+    border-radius: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    background-size: cover; 
+     background-position: center;
+}
+.car:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+img {
+    max-width: 200px;
+    max-height: 100px}
+.card {
+  background-color: #fff3cd;
+  border: 1px solid #f7f5f5;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin-bottom: 60px;
+  width: 1000px;
+  
+
+}
+.center-search {
+  display: inline-block;
+}
+.navbar{
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  height: 100px;
+  background-color: #343a40;
+  color: white;
+  
+}
+.gradient-background {
+  
+     align-items: center;
+     justify-content: center;
+      background: linear-gradient(126deg, #fcf598c9 0%, hsl(50, 89%, 60%) 100%);        }
+  .card-header {
+     background-color: #fff3cd; 
+     color: black; 
+     padding: 15px;
+     text-transform: uppercase;
+}
+.bu {
+    display: flex;
+    justify-content: flex-end;
+   
+    
+
+    gap: 10px; 
+  }
+.navbar-button {
+ padding: 10px;
+ background-color: #343a40;
+ color: #fff;
+ border: none;
+ cursor: pointer;
+ transition: background-color 0.3s, color 0.3s;
+}
+.navbar-button:hover {
+    background-color: #101011;
+    color: #eee;
+  }
+  .button-container {
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+}
+.button-container button {
+            margin: 5px; 
+        }
+        .not-available {
+            background-color: #78757578; 
+            border-color: #000; 
+        }
+        .not-available img {
+            filter: grayscale(100%); 
+        }
+    </style>   
+    
+
+</head>
+<body class="gradient-background"><br>
+    <h4 style=" margin: 30px ;">Welcome back {{name}} :)</h4>
+    <h5 style=" margin: 30px ;">ADD SECTION<br>
+<form method="GET" action="{{url_for('add_section',username=username)}}" >
+  <br>  <button name="section" class="btn btn-dark" value="add"> + </button>
+</form>
+<form method="GET" action="{{url_for('delall',username=username)}}">
+  <button onclick="return confirm('wanna del?')" type="submit" class="btn btn-dark">-</button>
+</form>
+</h5>
+<section>    
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+
+
+
+        
+    {%for i in sections%}
+    <div class="card ">
+    <b> <div class="card-header">{{i[1]}} 
+        <div class="bu">
+        <form method="get" action="{{url_for('edit_section',sec_id=i[0],username=username)}}">
+           
+            <button type="submit" class="btn btn-dark" >edit</button>
+        </form>
+        <form method="get" action="{{url_for('del_section',sec_id=i[0],username=username)}}">
+           
+          <button onclick="return confirm('Are you sure you want to delete this section?')" type="submit" class="btn btn-dark" >delete</button>
+            
+        </form>
+        <form method="get"  action="{{url_for('add_product',sec_id=i[0],username=username)}}">
+    
+            <button type="submit"  class="btn btn-dark">add product</button>
+        </form>
+    </div></div></b> 
+    
+    <div class="card-body pt-3">
+    <div class="col-md-12">
+  
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+        
+       
+    
+        {%for j in products[loop.index -1]%}
+        <div class="col-md-3 mb-4">
+          {%if j[4] == 0 %}
+          <div class="car not-available" >
+            
+            <img src="../static/{{j[2]}}.jpg" alt="Image" class=" card-img-top">
+                          <div class="card-body">
+                         <h5 class="card-title"> {{j[0]}} (NA)   </h5>    
+                         <p class="card-text"> Price: Rs.{{j[1]}}<br>(per {{j[3]}})</p>
+                        
+         
+<div class="button-container">
+        <form method="GET" action ="{{url_for('edit_product',username=username,section_id=i[0],product_id=j[2])}}">
+        <button type="submit" class="btn btn-dark"> edit </button>
+        </form>
+        <br>
+        <form method="get" action="{{url_for('del_product',sec_id=i[0],product_id=j[2],username=username)}}">
+           
+          <button onclick="return confirm('Are you sure you want to remove this product?')" type="submit" class="btn btn-dark" name="book_now">remove</button>
+
+        </form>
+    </div>
+            
+                     
+          
+          {% else %}
+          <div class="car" >
+            
+            <div ><img src="../static/{{j[2]}}.jpg" alt="Image" class="card-img-top" ></div>
+            <div class="card-body">
+           <h5 class="card-title"> {{j[0]}}   </h5>  
+          <p class="card-text"> Price: Rs.{{j[1]}}<br>(per {{j[3]}})</p>
+<div class="button-container">
+        <form method="GET" action ="{{url_for('edit_product',username=username,section_id=i[0],product_id=j[2])}}">
+        <button type="submit" class="btn btn-dark"> edit </button>
+        </form>
+        <br>
+        <form method="get" action="{{url_for('del_product',sec_id=i[0],product_id=j[2],username=username)}}">
+           
+          <button onclick="return confirm('Are you sure you want to remove this product?')" type="submit" class="btn btn-dark" name="book_now">remove</button>
+
+        </form>
+    </div>
+        {% endif %}
+    
+    </div></div>
+</div>
+
+  
+ 
+{% endfor %}
+  </div></div></div>
+</div></div>
+</div>
+{% endfor %}
+</div></div>
+</section> 
+</body>
+</html>

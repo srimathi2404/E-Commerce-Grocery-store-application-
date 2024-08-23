@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<head>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
+    <nav class="navbar navbar-dark bg-dark">
+       
+          <div class="container-fluid">
+            <div class="logo-container">
+                <div class="logo"><img src="../../static/Happy Mart.png" alt="logo"></div>
+            
+            <span class="navbar-brand mb-0 h1">HAPPY MART <br>
+                <div style="font-size: 16px; font-family: Arial, sans-serif;"><em>Happiness delivered at your doorstep !! </em></div></span>
+            
+            </div>                 
+               
+           </span>
+            
+          <span>
+          <div class="m">
+           
+         <button class="navbar-button button-container"  onclick="window.location.href='/';">Logout</button>
+       </span>
+       </div>
+    </div>
+    </div>
+      </nav>
+   <style>
+     .m{
+           margin-left: auto;
+       }
+     .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px; 
+            height: 40px;
+            margin-right: 10px;
+        }
+.navbar-button {
+ padding: 10px 20px;
+ background-color: #343a40;
+ color: #fff;
+ border: none;
+ cursor: pointer;
+ transition: background-color 0.3s, color 0.3s;
+}
+.navbar-button:hover {
+    background-color: #101011;
+    color: #eee;
+  }
+    .gradient-background {
+        width: 100%;
+        height: 100vh;
+       align-items: center;
+       justify-content: center;
+        background: linear-gradient(126deg, #fcf598c9 0%, hsl(50, 89%, 60%) 100%);        }
+        .custom-font {
+  font-family: 'ariel',sans-serif;
+  text-align: center; 
+  font-size: large;
+        }
+        #dynamic-table {
+            width: 30%; 
+            margin: 0 auto; 
+            background-color: #fff3cd;
+        }
+table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: -10px;
+        }
+        
+th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+thead {
+            margin-bottom: 10px; 
+        }
+.buttons{
+    text-align: center;
+}
+      
+#table-container{
+    margin-top: 50px;
+    display: flex;
+            justify-content: center;
+            align-items: center;
+            
+}
+h3{
+    text-align: center;
+    margin: 30px ;
+}
+</style>
+</head>
+<body class="gradient-background">
+<h3>Cart</h3>
+<br> 
+{% if length!=0 %}
+<div id="table-container">
+    <table id="dynamic-table" class="table-secondary">
+      <thead>
+        <tr>
+        <th>S.NO</th>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Amount</th>
+         
+        </tr>
+    </thead>
+    <tbody>
+<div>
+
+    {% for i in ca %}
+<tr>
+<td>{{loop.index}}</td>
+<td>{{i[0]}}</td>
+<td>{{i[2]}}</td>
+<td>Rs.{{i[1]*i[2]}} </td>
+</tr>
+</div>
+<br>
+{% endfor %}
+</tbody>
+</table>
+</div>
+
+
+<br>
+<h6 class="custom-font">Total Amount To Be Paid : Rs.{{amount}}</h6>
+
+<br>
+<div class="buttons">
+<form method="post">
+    <button onclick="return confirm('Are you sure you want to checkout?')" type="submit" class="btn btn-primary" name="action" value="checkout">check out</button>
+    
+    <button type="submit" class="btn btn-dark" name="action" value="buymore">continue shopping</button>
+</form>
+
+</div>
+{% else %}
+<div style="text-align: center;">
+<h4>Your Cart is Empty :(</h4><br>
+<form method="post">
+    
+    <button type="submit" class="btn btn-dark" name="action" value="buymore">continue shopping</button>
+</form>
+</div>
+{% endif %}
+</body>

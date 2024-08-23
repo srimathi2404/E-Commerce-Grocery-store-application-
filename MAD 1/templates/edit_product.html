@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+     
+        <nav class="navbar navbar-dark bg-dark">
+        
+           <div class="container-fluid">
+            <div class="logo-container">
+              <div class="logo"><img src="../../../../static/Happy Mart.png" alt="logo"></div>
+          
+          <span class="navbar-brand mb-0 h1">HAPPY MART <br>
+              <div style="font-size: 16px; font-family: Arial, sans-serif;"><em>Happiness delivered at your doorstep !! </em></div></span>
+          
+          </div>              
+           
+           <div class="m">
+            
+
+          <button class="navbar-button button-container"  onclick="window.location.href='/admin_login';">Logout</button>
+
+        </div>
+
+     </div>
+       </nav>
+    
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+       .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px; 
+            height: 40px;
+            margin-right: 10px;
+        }
+        .navbar-button {
+   padding: 10px 20px;
+   background-color: #343a40;
+   color: #fff;
+   border: none;
+   cursor: pointer;
+  }
+  .navbar-button:hover {
+    background-color: #101011;
+    color: #eee;}
+  .left-containe {
+    display: flex;
+    background-color: #f0f0f0;
+    padding: 20px;
+    height: 100%;
+    flex:1;
+
+
+    
+   }
+   .input-container {
+    display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 20px;
+ 
+   }
+
+   .containe {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 10px;
+    align-content: stretch;
+    justify-content: space-between;
+    align-items: baseline;
+    justify-items: start;
+   }
+
+h1{
+
+    padding-top: 50px;
+  text-align: center;
+  font-size:xx-large
+}
+  
+   
+   
+
+   </style>
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    </head>
+    {%extends "index.html"%}
+    {%block content%}
+    <body class="gradient-background">
+        <h1 >EDIT PRODUCT</h1>
+        <br><br><br><br><div style="color: red; text-align: center;">{{err}}</div><br>
+        <section class="container">
+        
+            <div class="left-containe">
+              
+          
+   
+        <form method="post" enctype="multipart/form-data">
+            <div class="containe">
+            <label for="a">Product name : </label>
+            <input id="a" name="product_name" value="{{name}}">
+            <label for="b">Price : </label>
+            <input id="b" type="number" min="0" name="price" value="{{price}}">
+            <label for="c">Instock Quantity : </label>
+            <input id="c" name="quantity" value="{{quantity}}" type="number" min="0">
+            <label for="d">Section ID : </label>
+            <input id="d" name="sid" value="{{sid}}" type="number" min="1">
+            <label for="select_option">Unit : </label>
+            <input name="unit" id="select_option" value="{{unit}}">
+              
+            <label for="imageFile">Image</label>
+            <input type="file" name="image" id="imageFile" accept="*.jpg">
+            <br></div><br>
+            <button type="submit" class="btn btn-dark">CHANGE</button>
+        </form>
+    </div>
+</section>
+    {%endblock content%}
+    </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        
+        <nav class="navbar navbar-dark bg-dark">
+           
+              <div class="container-fluid">
+                <div class="logo-container">
+                  <div class="logo"><img src="../../static/Happy Mart.png" alt="logo"></div>
+              
+              <span class="navbar-brand mb-0 h1">HAPPY MART <br>
+                  <div style="font-size: 16px; font-family: Arial, sans-serif;"><em>Happiness delivered at your doorstep !! </em></div></span>
+              
+              </div>
+              
+              <div class="m">
+               
+   
+             <button class="navbar-button button-container"  onclick="window.location.href='/';">Logout</button>
+   
+           </div>
+   
+        </div>
+          </nav>
+       
+      
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+       <style>
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px; 
+            height: 40px;
+            margin-right: 10px;
+        }
+           .navbar-button {
+      padding: 10px 20px;
+      background-color: #343a40;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+     }
+     .navbar-button:hover {
+    background-color: #101011;
+    color: #eee;
+  }
+     .left-containe {
+       background-color: #f0f0f0;
+       padding: 20px;
+       height: 90%;
+       flex:1;
+       
+      }
+      .butto {
+            position: relative;
+            bottom: 40px;
+                right: -300px;}
+     
+      </style>
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+       </head>
+       {%extends "index.html"%}
+       {%block content%}
+       <body class="gradient-background">
+   
+           <br><br><br><br><br>
+           <section class="container">
+               <div class="left-containe">
+
+        <b>{{sname}} - {{pname}}</b><br><br>
+        
+        <form method="POST"  id="form1">
+        <label for="quantity">Quantity:</label>
+        <input name="quantity" id="quantity" type="number" min="1" value="{{v}}">
+        <br><br>
+        Price : Rs.{{price}} (per {{unit}})
+        <br><br>
+       
+
+        <button type="submit"  class="btn btn-dark" form="form1" name="action" value="amount">check price</button>
+        <br><br>
+        <b>{{amount}}</b>
+
+        <br><br>
+    
+        <button type="submit" class="btn btn-dark" name="action" form="form1" value="cart" >add to cart</button>
+    </form>
+    <form action="{{url_for('user_dashboard',username=username)}}" method="get">
+<button type="submit" class="butto btn btn-dark ">BACK</button>
+    </form>
+  
+    
+    
+</div>
+</section>
+    {%endblock content%}
+
+    
+    </body>
+</html>
